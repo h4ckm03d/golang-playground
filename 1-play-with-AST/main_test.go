@@ -21,9 +21,3 @@ type Bar struct{}
 	assert.Nil(t, err)
 	assert.Equal(t, result, string(res))
 }
-
-func TestParser(t *testing.T) {
-	models, err := ParseModel("./service.go")
-	assert.Nil(t, err)
-	assert.Equal(t, 1, len(models))
-}

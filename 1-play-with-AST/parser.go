@@ -10,6 +10,50 @@ import (
 	"strings"
 )
 
+func resolveAssociate(model *Model, modelMap map[string]*Model, parents map[string]bool) {
+	parents[model.Name] = true
+
+	for i, field := range model.Fields {
+		if field.Association != nil && field.Association.Type != AssociationNone {
+			continue
+		}
+
+		str := strings.Trim(field.Type, "[]*")
+		if modelMap[str] != nil && !parents[str] {
+			resolveAssociate(modelMap[str], modelMap, parents)
+
+			var assoc int
+			switch string([]rune(field.Type)[0]) {
+			case "[":
+				if validateForeignKey(modelMap[str].Fields, model.Name) {
+					assoc = AssociationHasMany
+					break
+				}
+				assoc = AssociationBelongsTo
+			default:
+				if validateForeignKey(modelMap[str].Fields, model.Name) {
+					assoc = AssociationHasOne
+					break
+				}
+				assoc = AssociationBelongsTo
+			}
+			model.Fields[i].Association = &Association{Type: assoc, Model: modelMap[str]}
+		} else {
+			model.Fields[i].Association = &Association{Type: AssociationNone}
+		}
+	}
+}
+
+func validateForeignKey(fields []*Field, name string) bool {
+	for _, field := range fields {
+		val := name + "ID"
+		if field.Name == val {
+			return true
+		}
+	}
+	return false
+}
+
 func parseField(field *ast.Field) (*Field, error) {
 	if len(field.Names) != 1 {
 		return nil, errors.New("Failed to read model files. Please fix struct.")
@@ -81,7 +125,7 @@ func parseField(field *ast.Field) (*Field, error) {
 	return &fs, nil
 }
 
-func ParseModel(path string, exclude ...string) ([]*Model, error) {
+func ParseModel(path string, exclude ...string) (Models, error) {
 	fset := token.NewFileSet()
 	f, err := parser.ParseFile(fset, path, nil, 0)
 
