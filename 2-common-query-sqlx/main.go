@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"path/filepath"
+)
 
 var columnsUsers = []string{}
 
@@ -20,7 +23,9 @@ type User struct {
 }
 
 func main() {
-	for i := 0; i < 1000; i++ {
-		fmt.Println(ColumnUser())
-	}
+	// for i := 0; i < 1000; i++ {
+	// 	fmt.Println(ColumnUser())
+	// }
+
+	fmt.Println(filepath.Dir("./rapi/"))
 }
