@@ -35,8 +35,8 @@ func (r *DiffReporter) String() string {
 }
 
 func main() {
-	p1 := Person{1, "Lutfi", time.Now()}
-	p2 := Person{1, "Moch", time.Now()}
+	p1 := Person{1, "Lutfi", Job{}, time.Now()}
+	p2 := Person{1, "Moch", Job{}, time.Now()}
 	var r DiffReporter
 
 	if !cmp.Equal(p1, p2, cmp.Reporter(&r)) {
