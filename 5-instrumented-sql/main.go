@@ -25,12 +25,11 @@ func main() {
 	defer removeDB(dbpath)
 	queries := map[string]bool{}
 	logger := instrumentedsql.LoggerFunc(func(ctx context.Context, msg string, keyvals ...interface{}) {
+		log.Printf("%s %v", msg, keyvals)
 		switch msg {
 		case instrumentedsql.OpSQLConnExec,
 			instrumentedsql.OpSQLConnQuery,
 			instrumentedsql.OpSQLStmtExec:
-			log.Printf("%s %v", msg, keyvals)
-
 			if len(keyvals) > 1 && keyvals[0] != "query" {
 				return
 			}
