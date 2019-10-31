@@ -6,7 +6,6 @@ require (
 	github.com/bxcodec/faker v2.0.1+incompatible
 	github.com/davecgh/go-spew v1.1.1
 	github.com/fatih/astrewrite v0.0.0-20190527122930-f5295d6854fb
-	github.com/go-sql-driver/mysql v1.4.1 // indirect
 	github.com/golang/protobuf v1.3.2
 	github.com/google/go-cmp v0.3.1
 	github.com/haritsfahreza/libra v0.0.0-20190602165549-452e4407367d
@@ -14,6 +13,7 @@ require (
 	github.com/knq/snaker v0.0.0-20181215144011-2bc8a4db4687
 	github.com/kr/pretty v0.1.0 // indirect
 	github.com/lib/pq v1.2.0 // indirect
+	github.com/luna-duclos/instrumentedsql v1.1.1
 	github.com/mattn/go-sqlite3 v1.11.0
 	github.com/philhofer/fwd v1.0.0 // indirect
 	github.com/stretchr/testify v1.4.0
