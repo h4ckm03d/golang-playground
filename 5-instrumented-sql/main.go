@@ -22,8 +22,14 @@ func removeDB(path string) {
 }
 
 func main() {
-	defer removeDB(dbpath)
 	queries := map[string]bool{}
+	defer removeDB(dbpath)
+	defer func() {
+		fmt.Println("\n===list Query===")
+		for k := range queries {
+			fmt.Printf("%q \n", k)
+		}
+	}()
 	logger := instrumentedsql.LoggerFunc(func(ctx context.Context, msg string, keyvals ...interface{}) {
 		log.Printf("%s %v", msg, keyvals)
 		switch msg {
@@ -133,10 +139,5 @@ func main() {
 	err = rows.Err()
 	if err != nil {
 		log.Fatal(err)
-	}
-
-	fmt.Println("list Query")
-	for k := range queries {
-		fmt.Printf("%q \n", k)
 	}
 }
