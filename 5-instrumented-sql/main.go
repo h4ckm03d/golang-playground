@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strings"
 
 	"github.com/luna-duclos/instrumentedsql"
 	"github.com/mattn/go-sqlite3"
@@ -25,7 +26,7 @@ func main() {
 	queries := map[string]bool{}
 	defer removeDB(dbpath)
 	defer func() {
-		fmt.Println("\n===list Query===")
+		fmt.Println("\n===list known Query===")
 		for k := range queries {
 			fmt.Printf("%q \n", k)
 		}
@@ -41,7 +42,7 @@ func main() {
 			}
 			query := keyvals[1].(string)
 			log.Println(query)
-			if ok, _ := queries[query]; !ok {
+			if ok := queries[query]; !ok && strings.HasPrefix(query, "select") {
 				queries[query] = true
 			}
 		}
@@ -82,6 +83,25 @@ func main() {
 	tx.Commit()
 
 	rows, err := db.Query("select id, name from foo")
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer rows.Close()
+	for rows.Next() {
+		var id int
+		var name string
+		err = rows.Scan(&id, &name)
+		if err != nil {
+			log.Fatal(err)
+		}
+		fmt.Println(id, name)
+	}
+	err = rows.Err()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	rows, err = db.Query("select id, name from foo where name=?", "bajindul")
 	if err != nil {
 		log.Fatal(err)
 	}
