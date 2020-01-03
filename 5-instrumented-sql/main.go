@@ -42,7 +42,7 @@ func main() {
 			}
 			query := keyvals[1].(string)
 			log.Println(query)
-			if ok := queries[query]; !ok && strings.HasPrefix(query, "select") {
+			if ok := queries[query]; !ok && strings.Index(query, "where") > -1 {
 				queries[query] = true
 			}
 		}
