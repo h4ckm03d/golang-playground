@@ -1,6 +1,6 @@
 module github.com/h4ckm03d/golang-playground
 
-go 1.12
+go 1.18
 
 require (
 	github.com/bxcodec/faker v2.0.1+incompatible
@@ -10,12 +10,13 @@ require (
 	github.com/golang/protobuf v1.3.2
 	github.com/google/go-cmp v0.3.1
 	github.com/haritsfahreza/libra v0.0.0-20190602165549-452e4407367d
+	github.com/jinzhu/now v1.1.5 // indirect
 	github.com/jmoiron/sqlx v1.2.0
 	github.com/knq/snaker v0.0.0-20181215144011-2bc8a4db4687
 	github.com/kr/pretty v0.1.0 // indirect
 	github.com/lib/pq v1.2.0 // indirect
 	github.com/luna-duclos/instrumentedsql v1.1.1
-	github.com/mattn/go-sqlite3 v1.11.0
+	github.com/mattn/go-sqlite3 v1.14.14
 	github.com/philhofer/fwd v1.0.0 // indirect
 	github.com/stretchr/testify v1.4.0
 	github.com/tinylib/msgp v1.1.0
@@ -25,4 +26,6 @@ require (
 	google.golang.org/appengine v1.6.4 // indirect
 	gopkg.in/check.v1 v1.0.0-20190902080502-41f04d3bba15 // indirect
 	gopkg.in/yaml.v2 v2.2.3 // indirect
+	gorm.io/driver/sqlite v1.3.6 // indirect
+	gorm.io/gorm v1.23.8 // indirect
 )
