@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	fmt "fmt"
 	"io"
 	"os"
 	"testing"
@@ -76,6 +77,27 @@ func BenchmarkReadFileBuffered(b *testing.B) {
 		}
 		if err != io.EOF {
 			panic(err)
+		}
+
+		f.Close()
+	}
+}
+
+func BenchmarkReadFileBufferedScanner(b *testing.B) {
+	for n := 0; n < b.N; n++ {
+		f, err := os.Open("/tmp/test.txt")
+		if err != nil {
+			panic(err)
+		}
+
+		scanner := bufio.NewScanner(f)
+
+		for scanner.Scan() {
+			scanner.Text()
+		}
+
+		if err := scanner.Err(); err != nil {
+			fmt.Fprintln(os.Stderr, "reading standard input:", err)
 		}
 
 		f.Close()
