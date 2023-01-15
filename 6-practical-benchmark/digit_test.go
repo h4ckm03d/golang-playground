@@ -5,7 +5,15 @@ import (
 	"testing"
 )
 
-func sumUseInt(n int) int {
+func Solution1(n int) int {
+	sum := 0
+	for _, r := range fmt.Sprintf("%d", n) {
+		sum += int(r - '0')
+	}
+	return sum
+}
+
+func Solution2(n int) int {
 	sum := 0
 	for n > 0 {
 		digit := n % 10
@@ -15,22 +23,14 @@ func sumUseInt(n int) int {
 	return sum
 }
 
-func sumUseStr(n int) int {
-	sum := 0
-	for _, r := range fmt.Sprintf("%d", n) {
-		sum += int(r - '0')
-	}
-	return sum
-}
-
 func BenchmarkSumUseInt(b *testing.B) {
 	for n := 0; n < b.N; n++ {
-		sumUseInt(n)
+		Solution2(n)
 	}
 }
 
 func BenchmarkSumUseStr(b *testing.B) {
 	for n := 0; n < b.N; n++ {
-		sumUseStr(n)
+		Solution1(n)
 	}
 }
