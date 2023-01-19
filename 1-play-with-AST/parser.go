@@ -106,7 +106,6 @@ func parseField(field *ast.Field) (*Field, error) {
 		fieldTag = ""
 	} else {
 		s, err := strconv.Unquote(field.Tag.Value)
-
 		if err != nil {
 			s = field.Tag.Value
 		}
@@ -128,7 +127,6 @@ func parseField(field *ast.Field) (*Field, error) {
 func ParseModel(path string, exclude ...string) (Models, error) {
 	fset := token.NewFileSet()
 	f, err := parser.ParseFile(fset, path, nil, 0)
-
 	if err != nil {
 		return nil, err
 	}
@@ -152,12 +150,12 @@ func ParseModel(path string, exclude ...string) (Models, error) {
 				case *ast.TypeSpec:
 					modelName = x2.Name.Name
 
-					//only accept struct
+					// only accept struct
 					if _, ok := x2.Type.(*ast.StructType); !ok {
 						continue
 					}
 
-					//ignore excluded model
+					// ignore excluded model
 					if strings.Contains(excludedModels, modelName) {
 						continue
 					}
@@ -166,7 +164,6 @@ func ParseModel(path string, exclude ...string) (Models, error) {
 					case *ast.StructType:
 						for _, field := range x3.Fields.List {
 							fs, err := parseField(field)
-
 							if err != nil {
 								return false
 							}

@@ -1,11 +1,12 @@
-
 # Instrumented SQL
 
 Experiment purpose:
+
 - How to log every event to database
 - List all query
 
 Main logic to get query:
+
 ```go
 logger := instrumentedsql.LoggerFunc(func(ctx context.Context, msg string, keyvals ...interface{}) {
 		log.Printf("%s %v", msg, keyvals)
@@ -28,11 +29,11 @@ logger := instrumentedsql.LoggerFunc(func(ctx context.Context, msg string, keyva
 ```
 6:44 5-instrumented-sql (master) •/• go run main.go
 2020/01/03 16:45:18 sql-connector-connect [err <nil> duration 1.089484ms]
-2020/01/03 16:45:18 sql-conn-exec [query 
+2020/01/03 16:45:18 sql-conn-exec [query
         create table foo (id integer not null primary key, name text);
         delete from foo;
          err <nil> duration 2.504259ms args {}]
-2020/01/03 16:45:18 
+2020/01/03 16:45:18
         create table foo (id integer not null primary key, name text);
         delete from foo;
 
@@ -466,5 +467,5 @@ logger := instrumentedsql.LoggerFunc(func(ctx context.Context, msg string, keyva
 2020/01/03 16:45:18 sql-stmt-close [err <nil> duration 1.237µs]
 
 ===list known Query===
-"select id, name from foo where name=?" 
+"select id, name from foo where name=?"
 ```

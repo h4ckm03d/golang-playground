@@ -1,10 +1,12 @@
 # practical benchmark
 
-Benchmark run on macosX 
+Benchmark run on macosX
+
 - Processor: 3.41 GHz Intel Core i5
 - RAM: 16 GB 2400 MHz DDR4
 
 ## Result
+
 ```
 goos: darwin
 goarch: amd64

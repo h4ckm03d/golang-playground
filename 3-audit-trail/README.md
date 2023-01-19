@@ -4,10 +4,9 @@
 
 Find the changes of 2 same struct
 
-
 ### Benchmark
 
-```    
+```
 goos: linux
 goarch: amd64
 pkg: github.com/h4ckm03d/golang-playground/3-audit-trail

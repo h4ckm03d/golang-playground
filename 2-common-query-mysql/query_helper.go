@@ -15,7 +15,6 @@ type SqlxHelper struct {
 }
 
 func (sh *SqlxHelper) AddEntity(tagName string, entities ...interface{}) error {
-
 	for _, entity := range entities {
 		cols, name := GetColumns(entity, tagName)
 		if _, ok := sh.columns[name]; !ok {
@@ -44,8 +43,8 @@ func (sh *SqlxHelper) Create(tableName string, data map[string]interface{}) (int
 func (sh *SqlxHelper) Update(tableName string, id int64, query, data map[string]interface{}) (int64, error) {
 	return 0, nil
 }
-func New(db *sqlx.DB) *SqlxHelper {
 
+func New(db *sqlx.DB) *SqlxHelper {
 	return &SqlxHelper{
 		db:             db,
 		columns:        map[string][]string{},

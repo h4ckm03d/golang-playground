@@ -97,21 +97,21 @@ type Student struct {
 }
 
 func NewStudentA(p Person) Student {
-	s:= Student{Name: p.Name, Class: "A"}
+	s := Student{Name: p.Name, Class: "A"}
 	s.InputIndex = 10
 	s.Metadata.UtcOffset = -420
 	return s
 }
 
 func NewStudentB(p *Person) Student {
-	s:= Student{Name: p.Name, Class: "B"}
+	s := Student{Name: p.Name, Class: "B"}
 	s.InputIndex = 10
 	s.Metadata.UtcOffset = -420
 	return s
 }
 
 func NewStudentC(p *Person) *Student {
-	s:= &Student{Name: p.Name, Class: "C"}
+	s := &Student{Name: p.Name, Class: "C"}
 	s.InputIndex = 10
 	s.Metadata.UtcOffset = -420
 	return s

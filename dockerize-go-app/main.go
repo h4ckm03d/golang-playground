@@ -9,7 +9,7 @@ import (
 )
 
 func now(w http.ResponseWriter, req *http.Request) {
-	var local, _ = time.LoadLocation("Asia/Jakarta")
+	local, _ := time.LoadLocation("Asia/Jakarta")
 	fmt.Fprintf(w, "Now : %v\n", time.Now().In(local))
 }
 

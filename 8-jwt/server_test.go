@@ -99,7 +99,6 @@ func TestStoreWins(t *testing.T) {
 }
 
 func TestLeague(t *testing.T) {
-
 	t.Run("it returns the league table as JSON", func(t *testing.T) {
 		wantedLeague := []Player{
 			{"Cleo", 32},
@@ -120,7 +119,6 @@ func TestLeague(t *testing.T) {
 		assertStatus(t, response.Code, http.StatusOK)
 		assertLeague(t, got, wantedLeague)
 		assertContentType(t, response, jsonContentType)
-
 	})
 }
 
@@ -134,7 +132,6 @@ func assertContentType(t *testing.T, response *httptest.ResponseRecorder, want s
 func getLeagueFromResponse(t *testing.T, body io.Reader) (league []Player) {
 	t.Helper()
 	err := json.NewDecoder(body).Decode(&league)
-
 	if err != nil {
 		t.Fatalf("Unable to parse response from server %q into slice of Player, '%v'", body, err)
 	}

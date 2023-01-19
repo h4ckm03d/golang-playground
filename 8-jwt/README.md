@@ -1,11 +1,12 @@
 ### Auth:
+
 - login
 - check login
-- valid -> fetch data dari db ->  generate token -> return token
+- valid -> fetch data dari db -> generate token -> return token
 - invalid -> return 401
 
-
 # Request secret/admin/user area
+
 - request with jwt
 - validate jwt -> data email, data user dll - context
 
