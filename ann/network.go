@@ -45,10 +45,10 @@ func LoadNetwork(fileName string) *Network {
 // CreateNetwork creates the network by generating the layers, weights and biases
 func CreateNetwork(name string, rate float64, input, output Matrix, hiddensNodes ...int) Network {
 	input = append([][]float64{
-		// make([]float64, len(input[0])),
+		make([]float64, len(input[0])),
 	}, input...)
 	output = append([][]float64{
-		// make([]float64, len(output[0])),
+		make([]float64, len(output[0])),
 	}, output...)
 
 	// Create the layers arrays and add the input values
@@ -151,7 +151,7 @@ func (network *Network) ComputeError() float64 {
 	}
 
 	// Compute the average
-	return sum / float64(i)
+	return math.Abs(sum / float64(i))
 }
 
 // Train trains the neural network with a given number of iterations by executing

@@ -8,7 +8,7 @@ require (
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/fatih/astrewrite v0.0.0-20190527122930-f5295d6854fb
 	github.com/golang/protobuf v1.3.2
-	github.com/google/go-cmp v0.3.1
+	github.com/google/go-cmp v0.5.7
 	github.com/gookit/color v1.5.2
 	github.com/haritsfahreza/libra v0.0.0-20190602165549-452e4407367d
 	github.com/jmoiron/sqlx v1.2.0

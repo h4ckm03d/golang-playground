@@ -16,29 +16,31 @@ func TestCreateNetwork(t *testing.T) {
 	tests := []struct {
 		name  string
 		args  args
-		input []float64
-		want  []float64
+		input Matrix
 	}{
 		{
-			name: "Test case 1",
+			name: "Test case: diabetic",
 			args: args{
-				name:         "XOR",
+				name:         "diabetic",
 				rate:         0.1,
-				input:        Matrix{{0, 0}, {0, 1}, {1, 0}, {1, 1}},
-				output:       Matrix{{0}, {1}, {1}, {0}},
-				hiddensNodes: []int{50},
+				input:        Matrix{{1, 0, 0}, {0, 1, 0}, {0, 0, 1}, {1, 1, 0}},
+				output:       Matrix{{1}, {0}, {0}, {1}},
+				hiddensNodes: []int{20},
 			},
-			input: []float64{0, 1},
-			want:  []float64{1},
+			input: Matrix{{0, 1, 1}, {1, 1, 0}},
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			n := CreateNetwork(tt.args.name, tt.args.rate, tt.args.input, tt.args.output, tt.args.hiddensNodes...)
-			n.Train(200)
+			n.Train(2000)
 			fmt.Println(n.Layers[len(n.Layers)-1])
 			for i, v := range tt.args.input {
 				fmt.Println(v, n.Predict(v), tt.args.output[i])
+			}
+
+			for _, v := range tt.input {
+				fmt.Println(v, n.Predict(v))
 			}
 
 			// if !reflect.DeepEqual(got, tt.want) {
