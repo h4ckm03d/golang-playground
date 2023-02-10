@@ -14,7 +14,8 @@ func BenchmarkA(b *testing.B) {
 func BenchmarkB(b *testing.B) {
 	p := Person{Name: "bajindul", Age: 32}
 	for n := 0; n < b.N; n++ {
-		NewStudentB(&p)
+		var xx Student
+		xx = NewStudentB(&p)
 	}
 }
 

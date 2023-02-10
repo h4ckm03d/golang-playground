@@ -19,6 +19,7 @@ require (
 	github.com/tinylib/msgp v1.1.0
 	golang.org/x/crypto v0.0.0-20190927123631-a832865fa7ad
 	golang.org/x/net v0.0.0-20190620200207-3b0461eec859
+	gonum.org/v1/gonum v0.12.0
 	gopkg.in/cheggaaa/pb.v1 v1.0.28
 )
 
