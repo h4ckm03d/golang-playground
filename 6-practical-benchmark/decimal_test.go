@@ -25,7 +25,7 @@ func bpsAdd(addition *bps.BPS, n int) *bps.BPS {
 	return result
 }
 
-func BenchmarkShopstring001DecimalAdd(b *testing.B) {
+func BenchmarkShopspring001DecimalAdd(b *testing.B) {
 	addition := decimal.NewFromFloat(0.01)
 	for n := 0; n < b.N; n++ {
 		b.StopTimer()
@@ -34,7 +34,7 @@ func BenchmarkShopstring001DecimalAdd(b *testing.B) {
 	}
 }
 
-func BenchmarkShopstringPPMDecimalAdd(b *testing.B) {
+func BenchmarkShopspringPPMDecimalAdd(b *testing.B) {
 	addition := decimal.NewFromFloat(0.000001)
 	for n := 0; n < b.N; n++ {
 		b.StopTimer()
@@ -61,7 +61,7 @@ func BenchmarkMercariPPMBpsAdd(b *testing.B) {
 	}
 }
 
-func BenchmarkShopstringStringDecimalConvert(b *testing.B) {
+func BenchmarkShopspringStringDecimalConvert(b *testing.B) {
 	value := decimal.NewFromFloat(0.000001)
 	for n := 0; n < b.N; n++ {
 		b.StopTimer()
