@@ -15,8 +15,10 @@ require (
 	github.com/knq/snaker v0.0.0-20181215144011-2bc8a4db4687
 	github.com/luna-duclos/instrumentedsql v1.1.1
 	github.com/mattn/go-sqlite3 v1.11.0
+	github.com/shopspring/decimal v1.3.1
 	github.com/stretchr/testify v1.8.0
 	github.com/tinylib/msgp v1.1.0
+	go.mercari.io/go-bps v1.1.1
 	golang.org/x/crypto v0.0.0-20190927123631-a832865fa7ad
 	golang.org/x/net v0.0.0-20190620200207-3b0461eec859
 	gonum.org/v1/gonum v0.12.0
