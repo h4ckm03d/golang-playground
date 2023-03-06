@@ -43,12 +43,30 @@ func BenchmarkShopspringPPMDecimalAdd(b *testing.B) {
 	}
 }
 
+func BenchmarkShopspring1000DecimalAdd(b *testing.B) {
+	addition := decimal.NewFromFloat(0.000001)
+	for n := 0; n < b.N; n++ {
+		b.StopTimer()
+		b.StartTimer()
+		decimalAdd(addition, 1000)
+	}
+}
+
 func BenchmarkMercari001BpsAdd(b *testing.B) {
 	addition := bps.NewFromPercentage(1)
 	for n := 0; n < b.N; n++ {
 		b.StopTimer()
 		b.StartTimer()
 		bpsAdd(addition, n)
+	}
+}
+
+func BenchmarkMercari1000BpsAdd(b *testing.B) {
+	addition := bps.NewFromPercentage(1)
+	for n := 0; n < b.N; n++ {
+		b.StopTimer()
+		b.StartTimer()
+		bpsAdd(addition, 1000)
 	}
 }
 
