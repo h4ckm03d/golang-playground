@@ -19,8 +19,8 @@ require (
 	github.com/stretchr/testify v1.8.0
 	github.com/tinylib/msgp v1.1.0
 	go.mercari.io/go-bps v1.1.1
-	golang.org/x/crypto v0.0.0-20190927123631-a832865fa7ad
-	golang.org/x/net v0.0.0-20190620200207-3b0461eec859
+	golang.org/x/crypto v0.1.0
+	golang.org/x/net v0.1.0
 	gonum.org/v1/gonum v0.12.0
 	gopkg.in/cheggaaa/pb.v1 v1.0.28
 )
@@ -35,7 +35,7 @@ require (
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/rivo/uniseg v0.2.0 // indirect
 	github.com/xo/terminfo v0.0.0-20210125001918-ca9a967f8778 // indirect
-	golang.org/x/sys v0.0.0-20220811171246-fbc7d0a398ab // indirect
+	golang.org/x/sys v0.1.0 // indirect
 	google.golang.org/appengine v1.6.4 // indirect
 	gopkg.in/check.v1 v1.0.0-20190902080502-41f04d3bba15 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
