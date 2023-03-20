@@ -26,7 +26,7 @@ func TestGraph_GetCost(t *testing.T) {
 	}
 }
 
-func TestGraph_DFS(t *testing.T) {
+func TestGraph_MinCost(t *testing.T) {
 	g := &Graph{}
 
 	// create nodes
